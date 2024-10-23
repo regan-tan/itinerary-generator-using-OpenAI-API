@@ -6,7 +6,7 @@ import ApiService from '../services/api';
 
 const loading = ref(false);
 const error = ref('');
-const itinerary = ref('');
+const itinerary = ref([]);
 
 async function handleGenerate(data) {
   loading.value = true;
