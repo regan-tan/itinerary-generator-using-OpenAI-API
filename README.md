@@ -4,6 +4,7 @@
 // Create a .env file
 
 //ENV
+
 VITE_OPENAI_KEY = "{Your API key}"
 
 run npm install
