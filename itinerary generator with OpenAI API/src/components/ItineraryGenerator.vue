@@ -22,6 +22,19 @@ async function handleGenerate(data) {
     loading.value = false;
   }
 }
+
+function downloadJson() {
+  const dataStr = JSON.stringify(itinerary.value, null, 2);
+  const dataBlob = new Blob([dataStr], { type: 'application/json' });
+  const url = URL.createObjectURL(dataBlob);
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = 'travel-itinerary.json';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  URL.revokeObjectURL(url);
+}
 </script>
 
 <template>
@@ -50,6 +63,12 @@ async function handleGenerate(data) {
             :itinerary="itinerary"
             :error="error"
           />
+
+          <div v-if="!loading && itinerary.length > 0" class="card-footer">
+            <button @click="downloadJson" class="btn btn-secondary">
+              Download Itinerary as JSON
+            </button>
+          </div>
         </div>
       </div>
     </div>
