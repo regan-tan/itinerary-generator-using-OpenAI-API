@@ -30,11 +30,11 @@ class ApiService {
 
     try {
       const response = await this.openaiApi.post('/chat/completions', {
-        model: "gpt-3.5-turbo",
+        model: "gpt-4-turbo",
         messages: [
           { 
             role: "system", 
-            content: "You are a travel planner. Always respond with valid JSON only. No additional text or explanations." 
+            content: "You are a travel planner. Always respond with valid JSON only. No additional text, explanations, or commentary. The output should strictly match JSON format."
           },
           { 
             role: "user", 
